@@ -14,7 +14,7 @@ def likelihood(x, n, P):
     comb = 1
     for i in range(1, x + 1):
         comb = comb * (n - x + i) // i
-    return comb * (P ** x) * ((1 - P) ** (n - x))
+    return float(comb) * (P ** x) * ((1 - P) ** (n - x))
 
 
 def posterior(x, n, P, Pr):
