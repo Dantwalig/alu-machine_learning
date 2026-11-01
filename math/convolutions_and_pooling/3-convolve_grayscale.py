@@ -18,12 +18,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     if padding == 'valid':
         top = bottom = left = right = 0
     elif padding == 'same':
-        total_h = max((-(-h // sh) - 1) * sh + kh - h, 0)
-        total_w = max((-(-w // sw) - 1) * sw + kw - w, 0)
-        bottom = total_h // 2
-        top = total_h - bottom
-        right = total_w // 2
-        left = total_w - right
+        top = bottom = int(np.ceil(((h - 1) * sh + kh - h) / 2))
+        left = right = int(np.ceil(((w - 1) * sw + kw - w) / 2))
     else:
         top = bottom = padding[0]
         left = right = padding[1]
